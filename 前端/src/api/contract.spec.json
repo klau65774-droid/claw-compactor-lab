@@ -1,0 +1,62 @@
+{
+  "openapi_title": "ClawCompactor Context Lab API",
+  "openapi_version": "0.1.0",
+  "base_url": "/api/v1",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/health",
+      "summary": "Engine health, upstream v7.1.0 baseline metadata, tiktoken status, and active stages"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/presets",
+      "summary": "List canonical bilingual context engineering and failure-reproduction presets"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/compress/compare",
+      "summary": "Compare unmodified upstream claw-compactor v7.1.0 vs enhanced monotonic bilingual engine"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/compress/stream",
+      "summary": "Stream real-time stage, milestone, and complete SSE compression events"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/kv-cache/simulate",
+      "summary": "Evaluate repeated-run KV-cache prefix determinism, indexed placeholders, and traceback tail retention"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/rewind/retrieve",
+      "summary": "Retrieve lossless original payload from the bounded LRU RewindStore by 24-char hash ID"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/security/redact",
+      "summary": "Detect raw secret echo in upstream QuantumLock and enforce safe redaction with indexed placeholders"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/dos/audit",
+      "summary": "Execute 4 bounded-resource, O(N) dedup scaling, and non-expansion rollback security audits"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/benchmarks/summary",
+      "summary": "Return 3-tier sealed external benchmark metrics (LongBench EN+ZH, SWE-bench_Lite, OOD security)"
+    }
+  ],
+  "verdicts": ["PASSED", "DEGRADED", "BLOATED", "VULNERABLE", "FAILED"],
+  "modes": ["balanced", "lossless", "aggressive"],
+  "required_presets": [
+    "bilingual_rag_dedup",
+    "cn_json_tool_errors",
+    "kv_cache_secret_prompt",
+    "python_traceback_budget",
+    "swebench_diff_code",
+    "longbench_zh_needle"
+  ]
+}

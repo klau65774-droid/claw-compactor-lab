@@ -1,0 +1,1364 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ClawCompactor Context Lab API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "summary": "Engine health, upstream v7.1.0 baseline metadata, tiktoken status, and active stages",
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/presets": {
+      "get": {
+        "summary": "List canonical bilingual context engineering and failure-reproduction presets",
+        "operationId": "list_presets_api_v1_presets_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PresetsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/compress/compare": {
+      "post": {
+        "summary": "Compare unmodified upstream claw-compactor v7.1.0 vs enhanced monotonic bilingual engine",
+        "operationId": "compare_api_v1_compress_compare_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompressCompareRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompressCompareResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/compress/stream": {
+      "post": {
+        "summary": "Stream real-time stage, milestone, and complete SSE compression events",
+        "operationId": "stream_api_v1_compress_stream_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompressCompareRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "x-sse-events": [
+              "stage",
+              "milestone",
+              "complete"
+            ]
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/kv-cache/simulate": {
+      "post": {
+        "summary": "Evaluate repeated-run KV-cache prefix determinism, indexed placeholders, and traceback tail retention",
+        "operationId": "kv_cache_api_v1_kv_cache_simulate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KvCacheSimulateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KvCacheSimulateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rewind/retrieve": {
+      "post": {
+        "summary": "Retrieve lossless original payload from the bounded LRU RewindStore by 24-char hash ID",
+        "operationId": "rewind_api_v1_rewind_retrieve_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RewindRetrieveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewindRetrieveResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/security/redact": {
+      "post": {
+        "summary": "Detect raw secret echo in upstream QuantumLock and enforce safe redaction with indexed placeholders",
+        "operationId": "security_api_v1_security_redact_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SecurityRedactRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SecurityRedactResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dos/audit": {
+      "post": {
+        "summary": "Execute 4 bounded-resource, O(N) dedup scaling, and non-expansion rollback security audits",
+        "operationId": "dos_audit_api_v1_dos_audit_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DosAuditResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/benchmarks/summary": {
+      "get": {
+        "summary": "Return 3-tier sealed external benchmark metrics (LongBench EN+ZH, SWE-bench_Lite, OOD security)",
+        "operationId": "benchmarks_summary_api_v1_benchmarks_summary_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BenchmarksSummaryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BenchmarkRow": {
+        "properties": {
+          "tier": {
+            "type": "string",
+            "title": "Tier"
+          },
+          "dataset": {
+            "type": "string",
+            "title": "Dataset"
+          },
+          "metric": {
+            "type": "string",
+            "title": "Metric"
+          },
+          "upstream_value": {
+            "type": "string",
+            "title": "Upstream Value"
+          },
+          "enhanced_value": {
+            "type": "string",
+            "title": "Enhanced Value"
+          },
+          "delta": {
+            "type": "string",
+            "title": "Delta"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PASSED",
+              "FAILED",
+              "BASELINE"
+            ],
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tier",
+          "dataset",
+          "metric",
+          "upstream_value",
+          "enhanced_value",
+          "delta",
+          "status"
+        ],
+        "title": "BenchmarkRow"
+      },
+      "BenchmarksSummaryResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "verified",
+              "preview"
+            ],
+            "title": "Status"
+          },
+          "generated_at": {
+            "type": "string",
+            "title": "Generated At"
+          },
+          "upstream_baseline": {
+            "type": "string",
+            "title": "Upstream Baseline"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/BenchmarkRow"
+            },
+            "type": "array",
+            "title": "Rows"
+          },
+          "ood_security": {
+            "$ref": "#/components/schemas/OodSecurity"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "generated_at",
+          "upstream_baseline",
+          "rows",
+          "ood_security"
+        ],
+        "title": "BenchmarksSummaryResponse"
+      },
+      "ChatTurnMessage": {
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "system",
+              "user",
+              "assistant",
+              "tool"
+            ],
+            "title": "Role"
+          },
+          "content": {
+            "type": "string",
+            "maxLength": 512000,
+            "title": "Content"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "tool_call_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Call Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "role",
+          "content"
+        ],
+        "title": "ChatTurnMessage"
+      },
+      "CompressCompareRequest": {
+        "properties": {
+          "preset_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preset Id"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 512000,
+            "title": "Text"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "system",
+              "user",
+              "assistant",
+              "tool"
+            ],
+            "title": "Role"
+          },
+          "content_type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "json",
+              "code",
+              "log",
+              "diff",
+              "search"
+            ],
+            "title": "Content Type"
+          },
+          "query": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2048
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Query"
+          },
+          "target_budget_tokens": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 1000000.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Budget Tokens"
+          },
+          "redact_secrets": {
+            "type": "boolean",
+            "title": "Redact Secrets"
+          },
+          "deterministic_seed": {
+            "type": "integer",
+            "maximum": 9007199254740991.0,
+            "minimum": -9007199254740991.0,
+            "title": "Deterministic Seed"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "balanced",
+              "lossless",
+              "aggressive"
+            ],
+            "title": "Mode"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text",
+          "role",
+          "content_type",
+          "redact_secrets",
+          "deterministic_seed",
+          "mode"
+        ],
+        "title": "CompressCompareRequest"
+      },
+      "CompressCompareResponse": {
+        "properties": {
+          "preset_id": {
+            "type": "string",
+            "title": "Preset Id"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "balanced",
+              "lossless",
+              "aggressive"
+            ],
+            "title": "Mode"
+          },
+          "upstream": {
+            "$ref": "#/components/schemas/EngineRunOutcome"
+          },
+          "enhanced": {
+            "$ref": "#/components/schemas/EngineRunOutcome"
+          },
+          "token_delta": {
+            "type": "integer",
+            "title": "Token Delta"
+          },
+          "speedup_ratio": {
+            "type": "number",
+            "title": "Speedup Ratio"
+          }
+        },
+        "type": "object",
+        "required": [
+          "preset_id",
+          "mode",
+          "upstream",
+          "enhanced",
+          "token_delta",
+          "speedup_ratio"
+        ],
+        "title": "CompressCompareResponse"
+      },
+      "DosAuditItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "FAIL"
+            ],
+            "title": "Status"
+          },
+          "latency_ms": {
+            "type": "number",
+            "title": "Latency Ms"
+          },
+          "metric_label": {
+            "type": "string",
+            "title": "Metric Label"
+          },
+          "upstream_behavior": {
+            "type": "string",
+            "title": "Upstream Behavior"
+          },
+          "enhanced_behavior": {
+            "type": "string",
+            "title": "Enhanced Behavior"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status",
+          "latency_ms",
+          "metric_label",
+          "upstream_behavior",
+          "enhanced_behavior"
+        ],
+        "title": "DosAuditItem"
+      },
+      "DosAuditResponse": {
+        "properties": {
+          "passed": {
+            "type": "integer",
+            "title": "Passed"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "audits": {
+            "items": {
+              "$ref": "#/components/schemas/DosAuditItem"
+            },
+            "type": "array",
+            "title": "Audits"
+          }
+        },
+        "type": "object",
+        "required": [
+          "passed",
+          "total",
+          "audits"
+        ],
+        "title": "DosAuditResponse"
+      },
+      "EngineRunOutcome": {
+        "properties": {
+          "engine": {
+            "type": "string",
+            "enum": [
+              "upstream",
+              "enhanced"
+            ],
+            "title": "Engine"
+          },
+          "original_tokens": {
+            "type": "integer",
+            "title": "Original Tokens"
+          },
+          "compressed_tokens": {
+            "type": "integer",
+            "title": "Compressed Tokens"
+          },
+          "reduction_pct": {
+            "type": "number",
+            "title": "Reduction Pct"
+          },
+          "latency_ms": {
+            "type": "number",
+            "title": "Latency Ms"
+          },
+          "prefix_hash": {
+            "type": "string",
+            "title": "Prefix Hash"
+          },
+          "prefix_deterministic": {
+            "type": "boolean",
+            "title": "Prefix Deterministic"
+          },
+          "secret_leaks_count": {
+            "type": "integer",
+            "title": "Secret Leaks Count"
+          },
+          "needle_retention_pct": {
+            "type": "number",
+            "title": "Needle Retention Pct"
+          },
+          "structure_preserved": {
+            "type": "boolean",
+            "title": "Structure Preserved"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "PASSED",
+              "DEGRADED",
+              "BLOATED",
+              "VULNERABLE",
+              "FAILED"
+            ],
+            "title": "Verdict"
+          },
+          "stages": {
+            "items": {
+              "$ref": "#/components/schemas/StageStepMetrics"
+            },
+            "type": "array",
+            "title": "Stages"
+          },
+          "compressed_text": {
+            "type": "string",
+            "title": "Compressed Text"
+          },
+          "rewind_markers": {
+            "items": {
+              "$ref": "#/components/schemas/RewindMarkerRef"
+            },
+            "type": "array",
+            "title": "Rewind Markers"
+          },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Notes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "engine",
+          "original_tokens",
+          "compressed_tokens",
+          "reduction_pct",
+          "latency_ms",
+          "prefix_hash",
+          "prefix_deterministic",
+          "secret_leaks_count",
+          "needle_retention_pct",
+          "structure_preserved",
+          "verdict",
+          "stages",
+          "compressed_text",
+          "rewind_markers",
+          "notes"
+        ],
+        "title": "EngineRunOutcome"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "upstream_version": {
+            "type": "string",
+            "title": "Upstream Version"
+          },
+          "upstream_commit": {
+            "type": "string",
+            "title": "Upstream Commit"
+          },
+          "tiktoken_enabled": {
+            "type": "boolean",
+            "title": "Tiktoken Enabled"
+          },
+          "active_stages": {
+            "type": "integer",
+            "title": "Active Stages"
+          },
+          "rewind_entries": {
+            "type": "integer",
+            "title": "Rewind Entries"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "upstream_version",
+          "upstream_commit",
+          "tiktoken_enabled",
+          "active_stages",
+          "rewind_entries",
+          "mode"
+        ],
+        "title": "HealthResponse"
+      },
+      "KvCacheSimulateRequest": {
+        "properties": {
+          "runs": {
+            "type": "integer",
+            "maximum": 30.0,
+            "minimum": 2.0,
+            "title": "Runs"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/ChatTurnMessage"
+            },
+            "type": "array",
+            "maxItems": 64,
+            "minItems": 1,
+            "title": "Messages"
+          },
+          "keep_recent": {
+            "type": "integer",
+            "maximum": 64.0,
+            "minimum": 0.0,
+            "title": "Keep Recent"
+          },
+          "max_tokens_per_result": {
+            "type": "integer",
+            "maximum": 1000000.0,
+            "minimum": 1.0,
+            "title": "Max Tokens Per Result"
+          },
+          "query": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2048
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Query"
+          },
+          "redact_secrets": {
+            "type": "boolean",
+            "title": "Redact Secrets"
+          }
+        },
+        "type": "object",
+        "required": [
+          "runs",
+          "messages",
+          "keep_recent",
+          "max_tokens_per_result",
+          "redact_secrets"
+        ],
+        "title": "KvCacheSimulateRequest"
+      },
+      "KvCacheSimulateResponse": {
+        "properties": {
+          "upstream": {
+            "$ref": "#/components/schemas/KvCacheTrackResult"
+          },
+          "enhanced": {
+            "$ref": "#/components/schemas/KvCacheTrackResult"
+          },
+          "hit_rate_gain_pct": {
+            "type": "number",
+            "title": "Hit Rate Gain Pct"
+          }
+        },
+        "type": "object",
+        "required": [
+          "upstream",
+          "enhanced",
+          "hit_rate_gain_pct"
+        ],
+        "title": "KvCacheSimulateResponse"
+      },
+      "KvCacheTrackResult": {
+        "properties": {
+          "engine": {
+            "type": "string",
+            "enum": [
+              "upstream",
+              "enhanced"
+            ],
+            "title": "Engine"
+          },
+          "runs": {
+            "type": "integer",
+            "title": "Runs"
+          },
+          "unique_hashes": {
+            "type": "integer",
+            "title": "Unique Hashes"
+          },
+          "prefix_hit_rate_pct": {
+            "type": "number",
+            "title": "Prefix Hit Rate Pct"
+          },
+          "hashes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Hashes"
+          },
+          "tail_exception_retained": {
+            "type": "boolean",
+            "title": "Tail Exception Retained"
+          },
+          "indexed_placeholders_ok": {
+            "type": "boolean",
+            "title": "Indexed Placeholders Ok"
+          },
+          "secret_leaks_count": {
+            "type": "integer",
+            "title": "Secret Leaks Count"
+          },
+          "compressed_tokens": {
+            "type": "integer",
+            "title": "Compressed Tokens"
+          },
+          "original_tokens": {
+            "type": "integer",
+            "title": "Original Tokens"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "PASSED",
+              "DEGRADED",
+              "BLOATED",
+              "VULNERABLE",
+              "FAILED"
+            ],
+            "title": "Verdict"
+          },
+          "sample_output": {
+            "type": "string",
+            "title": "Sample Output"
+          }
+        },
+        "type": "object",
+        "required": [
+          "engine",
+          "runs",
+          "unique_hashes",
+          "prefix_hit_rate_pct",
+          "hashes",
+          "tail_exception_retained",
+          "indexed_placeholders_ok",
+          "secret_leaks_count",
+          "compressed_tokens",
+          "original_tokens",
+          "verdict",
+          "sample_output"
+        ],
+        "title": "KvCacheTrackResult"
+      },
+      "OodSecurity": {
+        "properties": {
+          "secret_recall_pct": {
+            "type": "number",
+            "title": "Secret Recall Pct"
+          },
+          "secret_total": {
+            "type": "integer",
+            "title": "Secret Total"
+          },
+          "benign_fpr_pct": {
+            "type": "number",
+            "title": "Benign Fpr Pct"
+          },
+          "benign_total": {
+            "type": "integer",
+            "title": "Benign Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "secret_recall_pct",
+          "secret_total",
+          "benign_fpr_pct",
+          "benign_total"
+        ],
+        "title": "OodSecurity"
+      },
+      "PresetItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "subtitle": {
+            "type": "string",
+            "title": "Subtitle"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "system",
+              "user",
+              "assistant",
+              "tool"
+            ],
+            "title": "Role"
+          },
+          "content_type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "json",
+              "code",
+              "log",
+              "diff",
+              "search"
+            ],
+            "title": "Content Type"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "balanced",
+              "lossless",
+              "aggressive"
+            ],
+            "title": "Mode"
+          },
+          "target_budget_tokens": {
+            "type": "integer",
+            "title": "Target Budget Tokens"
+          },
+          "redact_secrets": {
+            "type": "boolean",
+            "title": "Redact Secrets"
+          },
+          "query": {
+            "type": "string",
+            "title": "Query"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "subtitle",
+          "role",
+          "content_type",
+          "mode",
+          "target_budget_tokens",
+          "redact_secrets",
+          "query",
+          "text",
+          "description"
+        ],
+        "title": "PresetItem"
+      },
+      "PresetsResponse": {
+        "properties": {
+          "presets": {
+            "items": {
+              "$ref": "#/components/schemas/PresetItem"
+            },
+            "type": "array",
+            "title": "Presets"
+          }
+        },
+        "type": "object",
+        "required": [
+          "presets"
+        ],
+        "title": "PresetsResponse"
+      },
+      "RewindMarkerRef": {
+        "properties": {
+          "hash_id": {
+            "type": "string",
+            "title": "Hash Id"
+          },
+          "original_count": {
+            "type": "integer",
+            "title": "Original Count"
+          },
+          "compressed_count": {
+            "type": "integer",
+            "title": "Compressed Count"
+          },
+          "original_tokens": {
+            "type": "integer",
+            "title": "Original Tokens"
+          }
+        },
+        "type": "object",
+        "required": [
+          "hash_id",
+          "original_count",
+          "compressed_count",
+          "original_tokens"
+        ],
+        "title": "RewindMarkerRef"
+      },
+      "RewindRetrieveRequest": {
+        "properties": {
+          "hash_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{24}$",
+            "title": "Hash Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "hash_id"
+        ],
+        "title": "RewindRetrieveRequest"
+      },
+      "RewindRetrieveResponse": {
+        "properties": {
+          "found": {
+            "type": "boolean",
+            "title": "Found"
+          },
+          "hash_id": {
+            "type": "string",
+            "title": "Hash Id"
+          },
+          "original_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Original Text"
+          },
+          "original_tokens": {
+            "type": "integer",
+            "title": "Original Tokens"
+          },
+          "compressed_tokens": {
+            "type": "integer",
+            "title": "Compressed Tokens"
+          },
+          "evicted_or_expired": {
+            "type": "boolean",
+            "title": "Evicted Or Expired"
+          }
+        },
+        "type": "object",
+        "required": [
+          "found",
+          "hash_id",
+          "original_text",
+          "original_tokens",
+          "compressed_tokens",
+          "evicted_or_expired"
+        ],
+        "title": "RewindRetrieveResponse"
+      },
+      "SecretFinding": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "placeholder": {
+            "type": "string",
+            "title": "Placeholder"
+          },
+          "masked_preview": {
+            "type": "string",
+            "title": "Masked Preview"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "placeholder",
+          "masked_preview",
+          "count"
+        ],
+        "title": "SecretFinding"
+      },
+      "SecurityRedactRequest": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 128000,
+            "title": "Text"
+          },
+          "redact_secrets": {
+            "type": "boolean",
+            "title": "Redact Secrets"
+          },
+          "index_placeholders": {
+            "type": "boolean",
+            "title": "Index Placeholders"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text",
+          "redact_secrets",
+          "index_placeholders"
+        ],
+        "title": "SecurityRedactRequest"
+      },
+      "SecurityRedactResponse": {
+        "properties": {
+          "upstream": {
+            "$ref": "#/components/schemas/SecurityTrackResult"
+          },
+          "enhanced": {
+            "$ref": "#/components/schemas/SecurityTrackResult"
+          }
+        },
+        "type": "object",
+        "required": [
+          "upstream",
+          "enhanced"
+        ],
+        "title": "SecurityRedactResponse"
+      },
+      "SecurityTrackResult": {
+        "properties": {
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "SAFE",
+              "VULNERABLE"
+            ],
+            "title": "Verdict"
+          },
+          "raw_secret_echoed": {
+            "type": "boolean",
+            "title": "Raw Secret Echoed"
+          },
+          "findings": {
+            "items": {
+              "$ref": "#/components/schemas/SecretFinding"
+            },
+            "type": "array",
+            "title": "Findings"
+          },
+          "stabilized_text": {
+            "type": "string",
+            "title": "Stabilized Text"
+          },
+          "prefix_hash": {
+            "type": "string",
+            "title": "Prefix Hash"
+          },
+          "expansion_tokens": {
+            "type": "integer",
+            "title": "Expansion Tokens"
+          }
+        },
+        "type": "object",
+        "required": [
+          "verdict",
+          "raw_secret_echoed",
+          "findings",
+          "stabilized_text",
+          "prefix_hash",
+          "expansion_tokens"
+        ],
+        "title": "SecurityTrackResult"
+      },
+      "StageStepMetrics": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "order": {
+            "type": "integer",
+            "title": "Order"
+          },
+          "skipped": {
+            "type": "boolean",
+            "title": "Skipped"
+          },
+          "rolled_back": {
+            "type": "boolean",
+            "title": "Rolled Back"
+          },
+          "original_tokens": {
+            "type": "integer",
+            "title": "Original Tokens"
+          },
+          "compressed_tokens": {
+            "type": "integer",
+            "title": "Compressed Tokens"
+          },
+          "delta_tokens": {
+            "type": "integer",
+            "title": "Delta Tokens"
+          },
+          "timing_ms": {
+            "type": "number",
+            "title": "Timing Ms"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "order",
+          "skipped",
+          "rolled_back",
+          "original_tokens",
+          "compressed_tokens",
+          "delta_tokens",
+          "timing_ms",
+          "note"
+        ],
+        "title": "StageStepMetrics"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

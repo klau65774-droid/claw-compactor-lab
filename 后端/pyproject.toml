@@ -1,0 +1,89 @@
+[project]
+name = "claw-compactor"
+version = "7.1.0"
+description = "14-stage Fusion Pipeline for LLM token compression — 15-82% reduction depending on content, zero LLM inference cost, reversible compression, AST-aware code analysis"
+license = "MIT"
+requires-python = ">=3.9"
+readme = "README.md"
+keywords = [
+    "token-compression",
+    "llm",
+    "prompt-compression",
+    "context-compression",
+    "ai-agent",
+    "token-optimization",
+    "token-reduction",
+    "cost-reduction",
+    "context-window",
+    "workspace-compression",
+    "memory-compression",
+    "openclaw",
+    "llm-tools",
+    "ai-cost-saving",
+    "context-pruning",
+    "tree-sitter",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: General",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Pre-processors",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+
+[[project.authors]]
+name = "Bot777"
+
+[[project.authors]]
+name = "OpenClaw Contributors"
+
+[project.urls]
+Homepage = "https://github.com/open-compress/claw-compactor"
+Documentation = "https://docs.openclaw.ai"
+Repository = "https://github.com/open-compress/claw-compactor"
+"Bug Tracker" = "https://github.com/open-compress/claw-compactor/issues"
+Changelog = "https://github.com/open-compress/claw-compactor/releases"
+"Community" = "https://discord.com/invite/clawd"
+
+[project.scripts]
+claw-compactor = "claw_compactor.cli:main"
+
+[project.optional-dependencies]
+accurate = ["tiktoken>=0.5.0"]
+dev = ["pytest>=7.0", "pyyaml>=6.0", "httpx>=0.27", "claw-compactor[lab]"]
+lab = ["fastapi>=0.115", "pydantic>=2.9", "uvicorn>=0.30"]
+lab-benchmark = ["pyarrow>=17"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.package-dir]
+"claw_compactor" = "scripts/lib"
+"claw_compactor.enhanced" = "scripts/lib/enhanced"
+"claw_compactor.fusion" = "scripts/lib/fusion"
+"claw_compactor.rewind" = "scripts/lib/rewind"
+
+[tool.setuptools]
+packages = [
+    "claw_compactor",
+    "claw_compactor.enhanced",
+    "claw_compactor.fusion",
+    "claw_compactor.rewind",
+    "benchmark",
+    "scripts",
+]
+
+[tool.mypy]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["scripts.lib", "scripts.lib.fusion", "scripts.lib.fusion.*", "scripts.lib.rewind", "scripts.lib.rewind.*", "scripts.lib.tokens"]
+follow_imports = "silent"

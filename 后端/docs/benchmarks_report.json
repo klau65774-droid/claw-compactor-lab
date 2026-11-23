@@ -1,0 +1,310 @@
+{
+  "status": "verified",
+  "generated_at": "2026-11-23T07:36:06+00:00",
+  "upstream_baseline": "open-compress/claw-compactor v7.1.0 (c1b936d40b11, MIT)",
+  "rows": [
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/dureader",
+      "metric": "Token reduction across 200 full rows",
+      "upstream_value": "1.69%",
+      "enhanced_value": "15.61%",
+      "delta": "+13.92 pp",
+      "status": "BASELINE"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/dureader",
+      "metric": "Expanding outputs",
+      "upstream_value": "6",
+      "enhanced_value": "0",
+      "delta": "-6",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/dureader",
+      "metric": "Extractive answers retained among source-present rows",
+      "upstream_value": "1/16",
+      "enhanced_value": "16/16",
+      "delta": "+93.75 pp",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/multifieldqa_zh",
+      "metric": "Token reduction across 200 full rows",
+      "upstream_value": "1.53%",
+      "enhanced_value": "15.14%",
+      "delta": "+13.60 pp",
+      "status": "BASELINE"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/multifieldqa_zh",
+      "metric": "Expanding outputs",
+      "upstream_value": "74",
+      "enhanced_value": "0",
+      "delta": "-74",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/multifieldqa_zh",
+      "metric": "Extractive answers retained among source-present rows",
+      "upstream_value": "0/24",
+      "enhanced_value": "24/24",
+      "delta": "+100.00 pp",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/hotpotqa",
+      "metric": "Token reduction across 200 full rows",
+      "upstream_value": "2.50%",
+      "enhanced_value": "12.36%",
+      "delta": "+9.86 pp",
+      "status": "BASELINE"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/hotpotqa",
+      "metric": "Expanding outputs",
+      "upstream_value": "0",
+      "enhanced_value": "0",
+      "delta": "0",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/hotpotqa",
+      "metric": "Extractive answers retained among source-present rows",
+      "upstream_value": "172/173",
+      "enhanced_value": "172/173",
+      "delta": "+0.00 pp",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/qasper",
+      "metric": "Token reduction across 200 full rows",
+      "upstream_value": "0.07%",
+      "enhanced_value": "14.05%",
+      "delta": "+13.98 pp",
+      "status": "BASELINE"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/qasper",
+      "metric": "Expanding outputs",
+      "upstream_value": "4",
+      "enhanced_value": "0",
+      "delta": "-4",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/qasper",
+      "metric": "Extractive answers retained among source-present rows",
+      "upstream_value": "84/85",
+      "enhanced_value": "85/85",
+      "delta": "+1.18 pp",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/lcc",
+      "metric": "Token reduction across 500 full rows",
+      "upstream_value": "20.52%",
+      "enhanced_value": "13.74%",
+      "delta": "-6.78 pp",
+      "status": "BASELINE"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/lcc",
+      "metric": "Expanding outputs",
+      "upstream_value": "2",
+      "enhanced_value": "0",
+      "delta": "-2",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/lcc",
+      "metric": "Source boundary retained",
+      "upstream_value": "137/500",
+      "enhanced_value": "500/500",
+      "delta": "+72.60 pp",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/repobench-p",
+      "metric": "Token reduction across 500 full rows",
+      "upstream_value": "20.74%",
+      "enhanced_value": "11.49%",
+      "delta": "-9.25 pp",
+      "status": "BASELINE"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/repobench-p",
+      "metric": "Expanding outputs",
+      "upstream_value": "0",
+      "enhanced_value": "0",
+      "delta": "0",
+      "status": "PASSED"
+    },
+    {
+      "tier": "1",
+      "dataset": "THUDM/LongBench/repobench-p",
+      "metric": "Source boundary retained",
+      "upstream_value": "289/500",
+      "enhanced_value": "500/500",
+      "delta": "+42.20 pp",
+      "status": "PASSED"
+    },
+    {
+      "tier": "2",
+      "dataset": "princeton-nlp/SWE-bench_Lite",
+      "metric": "Token reduction across 300 full rows",
+      "upstream_value": "49.95%",
+      "enhanced_value": "5.87%",
+      "delta": "-44.07 pp",
+      "status": "BASELINE"
+    },
+    {
+      "tier": "2",
+      "dataset": "princeton-nlp/SWE-bench_Lite",
+      "metric": "Expanding outputs",
+      "upstream_value": "0",
+      "enhanced_value": "0",
+      "delta": "0",
+      "status": "PASSED"
+    },
+    {
+      "tier": "2",
+      "dataset": "princeton-nlp/SWE-bench_Lite",
+      "metric": "Complete patch retained",
+      "upstream_value": "0/300",
+      "enhanced_value": "300/300",
+      "delta": "+100.00 pp",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "Identical transcript × 10",
+      "metric": "Unique prefix hashes",
+      "upstream_value": "10",
+      "enhanced_value": "1",
+      "delta": "-9",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "Identical transcript × 10",
+      "metric": "Consecutive prefix hit rate",
+      "upstream_value": "0.00%",
+      "enhanced_value": "100.00%",
+      "delta": "+100.00 pp",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "800-frame Python traceback",
+      "metric": "Root cause retained across runs",
+      "upstream_value": "False",
+      "enhanced_value": "True",
+      "delta": "",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "Two release dates",
+      "metric": "Indexed placeholders",
+      "upstream_value": "False",
+      "enhanced_value": "True",
+      "delta": "",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "Changed release dates",
+      "metric": "Stable prefix hash matches",
+      "upstream_value": "False",
+      "enhanced_value": "True",
+      "delta": "",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "12 Chinese RAG paragraphs",
+      "metric": "Token reduction",
+      "upstream_value": "0.00%",
+      "enhanced_value": "91.67%",
+      "delta": "+91.67 pp",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "Bilingual LSH deduplication at 400 blocks",
+      "metric": "36.80× speedup; 200→400: 2.01×",
+      "upstream_value": "1122.428 ms for 400 blocks",
+      "enhanced_value": "Source tokens pre-counted: 15.155 ms for 200 blocks; 30.504 ms for 400 blocks",
+      "delta": "",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "JSON nesting preflight",
+      "metric": "Maximum depth: 32",
+      "upstream_value": "The depth 2048 probe returned without RecursionError",
+      "enhanced_value": "Left 2/2 deep inputs intact",
+      "delta": "",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "Rewind entry and byte caps",
+      "metric": "500 entries / 16 MiB",
+      "upstream_value": "Retains 48 bytes with the same 3-entry workload",
+      "enhanced_value": "500 entries after 501 inserts; 32/40 bytes in LRU probe",
+      "delta": "",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "Monotonic token rollback",
+      "metric": "17 → 17 enhanced tokens",
+      "upstream_value": "17 → 43 tokens",
+      "enhanced_value": "Expanding candidate rolled back: True",
+      "delta": "",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "Synthetic OOD credentials",
+      "metric": "Detected and removed",
+      "upstream_value": "0/15",
+      "enhanced_value": "15/15",
+      "delta": "+15",
+      "status": "PASSED"
+    },
+    {
+      "tier": "3",
+      "dataset": "Synthetic OOD decoys",
+      "metric": "Secret false positives",
+      "upstream_value": "N/A (no secret classifier)",
+      "enhanced_value": "0/15",
+      "delta": "",
+      "status": "PASSED"
+    }
+  ],
+  "ood_security": {
+    "secret_recall_pct": 100.0,
+    "secret_total": 15,
+    "benign_fpr_pct": 0.0,
+    "benign_total": 15
+  }
+}

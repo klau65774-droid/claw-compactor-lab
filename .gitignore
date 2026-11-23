@@ -1,0 +1,34 @@
+# Virtual environments & Python artifacts
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+后端/build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.benchmarks/
+.cache/
+.coverage
+htmlcov/
+
+# Frontend artifacts
+前端/node_modules/
+前端/dist/
+node_modules/
+dist/
+.pnpm-store/
+
+# Design / scratch / environment files
+ui_reference.png
+CODEX_*PROMPT*.md
+KIMI_*PROMPT*.md
+docs/screenshots/*-preview.png
+.env
+.env.*
+!.env.example
+.superpowers/
+docs/superpowers/
+*.log
